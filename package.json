@@ -1,0 +1,60 @@
+{
+  "name": "cypress-test",
+  "description": "Automation tests for MMR",
+  "keywords": [
+    "eslint",
+    "cypress"
+  ],
+  "dependencies": {
+    "@cypress/schema-tools": "^4.7.9",
+    "@jc21/cypress-jsonschema-validation": "^0.0.1",
+    "@percy/cypress": "^3.1.1",
+    "ajv": "^6.12.6",
+    "chai-json-schema": "^1.5.1",
+    "cypress-mochawesome-reporter": "3.0.0",
+    "mochawesome": "7.1.3",
+    "mochawesome-merge": "4.2.1",
+    "npm": "^8.2.0",
+    "ws": "^8.5.0",
+    "yarn": "^1.22.10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.0",
+    "@babel/preset-env": "^7.18.0",
+    "@cucumber/cucumber": "^8.2.1",
+    "@cypress/webpack-preprocessor": "^5.11.1",
+    "@percy/cli": "^1.0.0-beta.75",
+    "@percy/storybook": "^4.1.0",
+    "@types/cypress-cucumber-preprocessor": "^4.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "babel-loader": "^8.2.5",
+    "cypress": "^9.6.1",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-xpath": "^1.6.2",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-chai-friendly": "^0.7.1",
+    "eslint-plugin-cypress": "^2.11.3",
+    "eslint-plugin-import": "^2.23.3",
+    "multiple-cucumber-html-reporter": "^1.20.0",
+    "node": "^17.7.2",
+    "webpack": "^5.72.1"
+  },
+  "scripts": {
+    "cleanInstall": "npm ci",
+    "cypress:open": "./node_modules/.bin/cypress open",
+    "qa:test": "CYPRESS_ENV='qa' cypress run -e TAGS='@regression'",
+    "uat:test": "CYPRESS_ENV='uat' cypress run -e TAGS='@regression'",
+    "prod:test": "CYPRESS_ENV='prod' cypress run -e TAGS='@regression'"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
+  }
+}
