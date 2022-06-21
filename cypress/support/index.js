@@ -14,7 +14,40 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
+
+// Import mochawesome reporter
+import 'cypress-mochawesome-reporter/register';
+
+// Import percy
+import '@percy/cypress';
+
+// Import chaiJsonSchema
+import chaiJsonSchema from 'chai-json-schema';
+
+chai.use(chaiJsonSchema);
 
 // Alternatively you can use CommonJS syntax:
-// require('./commands')
+require('./commands');
+// Support Xpath
+require('cypress-xpath');
+
+Cypress.Cookies.defaults({
+  preserve: ['manheim.login.pwreset', 'manheim.login.brand.logo',
+    'manheim.login.brand.name', 'manheim.resetpw.mode', 'manheim.login.url',
+    'manheim.sso.exit_url', 'PF', 'lane_alert', 'auth_tkt', 'contactguid',
+    'bearerToken', 'userFullName', 'userId', 'cais_refresh', 'SESSION'],
+});
+
+if (Cypress.config('hideXHR')) {
+  // Hide fetch/XHR requests
+  const app = window.top;
+
+  if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
+    const style = app.document.createElement('style');
+    style.innerHTML = '.command-name-request, .command-name-xhr { display: none }';
+    style.setAttribute('data-hide-command-log-request', '');
+
+    app.document.head.appendChild(style);
+  }
+}
