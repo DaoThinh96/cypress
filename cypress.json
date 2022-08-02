@@ -41,6 +41,8 @@
     ],
     "numTestsKeptInMemory": 5,
     "env": {
+      "ENV": "PROD",
+      "baseURL": "https://juice-shop.guardrails.ai",
       "extraSmallWait": 500,
       "smallWait": 2500,
       "longWait": 7500
