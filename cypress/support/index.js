@@ -32,13 +32,6 @@ require('./commands');
 // Support Xpath
 require('cypress-xpath');
 
-Cypress.Cookies.defaults({
-  preserve: ['manheim.login.pwreset', 'manheim.login.brand.logo',
-    'manheim.login.brand.name', 'manheim.resetpw.mode', 'manheim.login.url',
-    'manheim.sso.exit_url', 'PF', 'lane_alert', 'auth_tkt', 'contactguid',
-    'bearerToken', 'userFullName', 'userId', 'cais_refresh', 'SESSION'],
-});
-
 if (Cypress.config('hideXHR')) {
   // Hide fetch/XHR requests
   const app = window.top;

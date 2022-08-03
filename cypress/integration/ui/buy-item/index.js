@@ -87,7 +87,7 @@ Then('I expect the newly added address has correct info', () => {
 });
 
 When('I clean up data of one product', () => {
-  cy.getValidBearerToken();
+  cy.authenticate();
   cy.task('getValue', { key: 'bearerToken' }).then((bearerTokenValue) => {
     cy.request({
       method: 'DELETE',
@@ -175,7 +175,7 @@ Then('I expect two products that added to the basket has correct info', () => {
 });
 
 When('I clean up data of two products', () => {
-  cy.getValidBearerToken();
+  cy.authenticate();
   cy.task('getValue', { key: 'bearerToken' }).then((bearerTokenValue) => {
     cy.request({
       method: 'DELETE',
